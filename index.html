@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>node-electron</title>
+  </head>
+  <body>
+  </body>
+  <script>
+    require('electron').ipcRenderer.on('argv', (event, message) => {
+      const pathUtils = require('path')
+      const parseOptions = require('./parseOptions')
+      const fs = require('fs')
+      const resolve = require('resolve')
+      var options = parseOptions(message.slice(1))
+      process.argv = [message[0]].concat(options.args)
+
+      options.requires.forEach(module => {
+        var path = fs.realpathSync(resolve.sync(module))
+        require(path)
+      })
+      require(pathUtils.resolve(options.args[0]))
+    })
+  </script>
+</html>

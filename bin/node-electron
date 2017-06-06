@@ -1,0 +1,8 @@
+#!/usr/bin/env node
+var child_process = require('child_process')
+const pathUtils = require('path')
+const parseOptions = require('../parseOptions')
+
+var args = [pathUtils.resolve(__dirname, '../index.js')].concat(process.argv.slice(2))
+var p = child_process.spawn('electron', args, {stdio: 'inherit'})
+p.on('close', process.exit)
