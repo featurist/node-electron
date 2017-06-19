@@ -7,6 +7,8 @@
   <body>
   </body>
   <script>
+    require('./patches/console')
+
     require('electron').ipcRenderer.on('argv', (event, message) => {
       const pathUtils = require('path')
       const parseOptions = require('./parseOptions')
@@ -19,7 +21,10 @@
         var path = fs.realpathSync(resolve.sync(module))
         require(path)
       })
-      require(pathUtils.resolve(options.args[0]))
+
+      if (options.args.length > 0) {
+        require(pathUtils.resolve(options.args[0]))
+      }
     })
   </script>
 </html>
