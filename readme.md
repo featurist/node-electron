@@ -1,13 +1,20 @@
 # node-electron
 
-A a `node` replacement that gives you all the electron things: DOM, debugger, and... restart your app with CMD-R!
+A `node` replacement that gives you all the electron things: DOM, debugger, and... restart your app with CMD-R!
 
 ## install
 
-For now just clone this and run
-
 ```sh
-npm link
+npm i -g node-electron
 ```
 
-I'll pop it in NPM as soon as!
+## usage
+
+```sh
+node-electron index.js
+```
+
+## what can it do?
+
+* debug your app
+* restart your app with CMD-R
