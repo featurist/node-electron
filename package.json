@@ -4,9 +4,7 @@
   "description": "",
   "main": "index.js",
   "bin": "bin/node-electron",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "author": "",
   "license": "ISC",
   "dependencies": {
