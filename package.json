@@ -1,6 +1,6 @@
 {
   "name": "node-electron",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "bin": "bin/node-electron",
