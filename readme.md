@@ -16,5 +16,6 @@ node-electron index.js
 
 ## what can it do?
 
-* debug your app
+* runs your app in a browser environment
+* debug your app using chrome dev-tools
 * restart your app with CMD-R
