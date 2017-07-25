@@ -1,4 +1,4 @@
-# node-electron
+# node-electron [![npm version](https://img.shields.io/npm/v/node-electron.svg)](https://www.npmjs.com/package/node-electron) [![npm](https://img.shields.io/npm/dm/node-electron.svg)](https://www.npmjs.com/package/node-electron)
 
 A `node` replacement that gives you all the electron things: DOM, debugger, and... restart your app with CMD-R!
 
