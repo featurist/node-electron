@@ -19,3 +19,6 @@ node-electron index.js
 * runs your app in a browser environment
 * debug your app using chrome dev-tools
 * restart your app with CMD-R
+
+## We're Hiring!
+Featurist provides full stack, feature driven development teams. Want to join us? Check out [our career opportunities](https://www.featurist.co.uk/careers/).
