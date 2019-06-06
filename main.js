@@ -14,7 +14,16 @@ let mainWindow
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600})
+  mainWindow = new BrowserWindow({
+    width: 800,
+    height: 600,
+    focusable: true,
+    // show: false,
+    webPreferences: {
+      nodeIntegration: true,
+      webSecurity: false
+    }
+  })
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
@@ -25,9 +34,6 @@ function createWindow () {
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools()
-
-  // mainWindow.webContents.debugger.attach('1.1')
-  mainWindow.webContents.debugger.sendCommand('Network.enable')
 
   mainWindow.webContents.on('did-finish-load', () => {
     mainWindow.webContents.send('argv', [pathUtils.resolve('bin/node-electron')].concat(process.argv.slice(2)))

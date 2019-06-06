@@ -7,6 +7,8 @@
   <body>
   </body>
   <script>
+    window.ELECTRON_DISABLE_SECURITY_WARNINGS = true
+
     require('./patches/console')
 
     require('electron').ipcRenderer.on('argv', (event, message) => {
