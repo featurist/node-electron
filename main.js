@@ -5,6 +5,9 @@ const app = electron.app
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
 
+const Options = require('./options')
+const options = new Options(process.argv)
+
 const path = require('path')
 const url = require('url')
 
@@ -18,7 +21,7 @@ function createWindow () {
     width: 800,
     height: 600,
     focusable: true,
-    // show: false,
+    show: options.interactiveMode,
     webPreferences: {
       nodeIntegration: true,
       webSecurity: false
@@ -36,7 +39,7 @@ function createWindow () {
   mainWindow.webContents.openDevTools()
 
   mainWindow.webContents.on('did-finish-load', () => {
-    mainWindow.webContents.send('argv', [pathUtils.resolve('bin/node-electron')].concat(process.argv.slice(2)))
+    mainWindow.webContents.send('argv', [pathUtils.resolve('bin/node-electron')].concat(options.commandArgs))
   })
 
   // Emitted when the window is closed.

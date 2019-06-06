@@ -10,8 +10,10 @@
     window.ELECTRON_DISABLE_SECURITY_WARNINGS = true
 
     require('./patches/console')
+    const Shell = require('./shell')
+    const sh = new Shell()
 
-    require('electron').ipcRenderer.on('argv', (event, message) => {
+    require('electron').ipcRenderer.on('argv', async (event, message) => {
       const pathUtils = require('path')
       const parseOptions = require('./parseOptions')
       const fs = require('fs')
@@ -25,7 +27,14 @@
       })
 
       if (options.args.length > 0) {
-        require(pathUtils.resolve(options.args[0]))
+        let command = options.args[0]
+        try {
+          command = await sh(`which ${command}`)
+          require(pathUtils.resolve(commandPath))
+        } catch {
+          // whatevs
+        }
+        require(pathUtils.resolve(command))
       }
     })
   </script>

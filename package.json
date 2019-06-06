@@ -10,10 +10,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "debug": "^4.1.1",
     "resolve": "latest"
   },
   "devDependencies": {
+    "cucumber": "^5.1.0",
     "electron": "latest",
-    "mocha": "latest"
+    "mkdirp-promise": "^5.0.1",
+    "mocha": "latest",
+    "rmfr": "^2.0.0"
   }
 }
