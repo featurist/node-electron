@@ -24,7 +24,7 @@ When('I run a scenario with that step', function () {
   ].join('\n')
   return this.writeFile('features/with_that_step.feature', contents)
     .then(() => {
-      return this.runCommand('node-electron cucumber-js features/with_that_step.feature')
+      return this.runCommand('node-electron ./simple-cli features/with_that_step.feature')
     })
 })
 
@@ -36,33 +36,13 @@ When('I run a scenario with that step and DEBUG={string}', function (debugEnviro
   ].join('\n')
   return this.writeFile('features/with_that_step_and_debug.feature', contents)
     .then(() => {
-      return this.runCommand('node-electron cucumber-js features/with_that_step_and_debug.feature', { env: { DEBUG: debugEnvironmentValue } })
+      return this.runCommand('node-electron ./simple-cli features/with_that_step_and_debug.feature', { env: { DEBUG: debugEnvironmentValue } })
     })
 })
 
-When('I run `node-electron cucumber-js`', function () {
-  return this.runCommand('node-electron cucumber-js')
-})
-
-When('I run `node-electron cucumber-js --interactive`', function () {
-  return this.runCommand('node-electron cucumber-js --interactive')
-})
-
-When('I run `node-electron cucumber-js --tags @a`', function () {
-  return this.runCommand('node-electron cucumber-js --tags @a')
-})
-
-When('I run `node-electron cucumber-js --tags @b`', function () {
-  return this.runCommand('node-electron cucumber-js --tags @b')
-})
-
-When('I run `node-electron cucumber-js --help`', function () {
-  return this.runCommand('node-electron cucumber-js --help')
-})
-
-When('I run `node-electron cucumber-js` in a TTY terminal', function () {
-  return this.runCommand('node-electron cucumber-js', { env: { CUCUMBER_ELECTRON_FORCE_TTY: 'true' } })
-})
+When(/^I run `(.*)`$/, function (command) {
+  return this.runCommand(command)
+});
 
 Then('the process should exit with code {int}', function (exitCode) {
   return this.assertProcessExitedWithCode(exitCode)

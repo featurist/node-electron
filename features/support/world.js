@@ -149,5 +149,6 @@ setWorldConstructor(CucumberElectronWorld)
 Before(async function () {
   await rmfr(this.tempDir)
   await mkdirp(this.tempDir)
+  await this.sh("cp ../features/support/simple-cli.js .")
   await this.sh("ln -s ../node_modules .")
 })

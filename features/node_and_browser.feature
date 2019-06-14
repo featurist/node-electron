@@ -31,9 +31,9 @@ Feature: Node and browser
         """
 
   Scenario: Running a passing scenario with node.js and browser step definitions
-    When I run `node-electron cucumber-js`
+    When I run `node-electron ./simple-cli`
     Then the process should exit with code 0
 
   Scenario: Debugging a scenario with node.js and browser step definitions
-    When I run `node-electron cucumber-js --interactive`
+    When I run `node-electron ./simple-cli --interactive`
     Then the process should not exit

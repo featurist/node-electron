@@ -8,34 +8,6 @@
   </body>
   <script>
     window.ELECTRON_DISABLE_SECURITY_WARNINGS = true
-
-    require('./patches/console')
-    const Shell = require('./shell')
-    const sh = new Shell()
-
-    require('electron').ipcRenderer.on('argv', async (event, message) => {
-      const pathUtils = require('path')
-      const parseOptions = require('./parseOptions')
-      const fs = require('fs')
-      const resolve = require('resolve')
-      var options = parseOptions(message.slice(1))
-      process.argv = [message[0]].concat(options.args)
-
-      options.requires.forEach(module => {
-        var path = fs.realpathSync(resolve.sync(module))
-        require(path)
-      })
-
-      if (options.args.length > 0) {
-        let command = options.args[0]
-        try {
-          command = await sh(`which ${command}`)
-          require(pathUtils.resolve(commandPath))
-        } catch {
-          // whatevs
-        }
-        require(pathUtils.resolve(command))
-      }
-    })
+    require('./window-main')
   </script>
 </html>

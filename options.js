@@ -2,7 +2,8 @@ class Options {
   constructor(argv) {
     this.interactiveMode = Boolean(argv.find(isInteractiveSwitch))
     this.isTTY = Boolean(argv.find(isTTYSwitch))
-    this.commandArgs = argv.filter(arg => !isInteractiveSwitch(arg) && !isTTYSwitch(arg))
+    this.isHelp = Boolean(argv.find(isHelp))
+    this.commandArgs = argv.filter(arg => !isInteractiveSwitch(arg) && !isTTYSwitch(arg) && !isHelp(arg))
   }
 }
 
@@ -12,6 +13,10 @@ function isInteractiveSwitch(arg) {
 
 function isTTYSwitch(arg) {
   return arg === '--TTY'
+}
+
+function isHelp(arg) {
+  return arg === '--help' || arg === '-h'
 }
 
 module.exports = Options

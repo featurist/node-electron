@@ -5,7 +5,7 @@
   "main": "index.js",
   "bin": "bin/node-electron",
   "scripts": {
-    "test": "mocha"
+    "test": "bin/node-electron features/support/cucumber.js"
   },
   "author": "",
   "license": "ISC",
