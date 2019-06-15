@@ -8,7 +8,7 @@ function exitWithError(error) {
 module.exports = class CucumberCLI {
   constructor ({cwd, argv, stdout}) {
     this.cwd = cwd
-    this.argv = argv
+    this.argv = ['node', 'cucumber', ...argv]
     this.stdout = stdout
   }
 

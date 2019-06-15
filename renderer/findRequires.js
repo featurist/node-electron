@@ -11,8 +11,5 @@ module.exports = function(args) {
     }
   }
 
-  return {
-    requires: requires,
-    args: args.slice(i)
-  }
+  return requires
 }

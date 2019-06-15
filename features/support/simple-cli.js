@@ -1,3 +1,5 @@
+const debug = require('debug')('simple-cli')
+
 module.exports = class SimpleCli {
   constructor({argv, cwd, stdout}) {
     this.argv = argv
@@ -6,7 +8,6 @@ module.exports = class SimpleCli {
   }
 
   run () {
-    console.log('ARGV', this.argv)
     return Promise.resolve()
   }
 }
