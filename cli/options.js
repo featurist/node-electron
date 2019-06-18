@@ -3,8 +3,16 @@ class Options {
     this.interactiveMode = Boolean(argv.find(isInteractiveSwitch))
     this.isTTY = Boolean(argv.find(isTTYSwitch))
     this.isHelp = Boolean(argv.find(isHelp))
-    this.commandArgs = argv.filter(arg => !isInteractiveSwitch(arg) && !isTTYSwitch(arg) && !isHelp(arg))
+    this.commandArgs = argv.filter((arg, index) => !isInteractiveSwitch(arg) && !isTTYSwitch(arg) && !isHelp(arg) && !isRequireSwitch(arg, index, argv))
   }
+}
+
+function isRequireSwitch(arg, index, argv) {
+  const isRequire =  arg === '--require' || arg === '-r'
+  if (!isRequire && index > 0) {
+    return isRequireSwitch(argv[index-1])
+  }
+  return isRequire
 }
 
 function isInteractiveSwitch(arg) {

@@ -27,10 +27,10 @@ module.exports = class CucumberCLI {
     }
 
     const exitCode = result.success ? 0 : 1
-    if (result.shouldExitImmediately) {
-      process.exit(exitCode)
+    if (result.success === 0) {
+      return Promise.resolve()
     } else {
-      process.exitCode = exitCode
+      return Promise.reject()
     }
   }
 }

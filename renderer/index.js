@@ -2,6 +2,7 @@ const Options = require('../cli/options')
 const electron = require('electron')
 const options = new Options(electron.remote.process.argv.slice(2))
 const { ipcRenderer: ipc } = electron
+const { join } = require('path')
 
 console.log('OPTIONS', options)
 require('./patches/console')
@@ -22,7 +23,7 @@ ipc.on('run-command', async () => {
   const argv = options.commandArgs
 
   requires.forEach(module => {
-    var path = fs.realpathSync(resolve.sync(module))
+    var path = join(process.cwd(), module)
     require(path)
   })
 
@@ -40,9 +41,7 @@ ipc.on('run-command', async () => {
       electron.remote.process.exit(0)
     }
     catch (e) {
-      console.log(e, e.stack)
       electron.remote.process.exit(1)
-
     }
   }
 })

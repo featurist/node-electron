@@ -6,8 +6,6 @@ module.exports = function(args) {
     if (arg == '-r') {
       i++
       requires.push(args[i])
-    } else {
-      break
     }
   }
 
