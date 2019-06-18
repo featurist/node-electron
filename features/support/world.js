@@ -7,6 +7,7 @@ const mkdirp = require('mkdirp-promise')
 const rmfr = require('rmfr')
 const colors = require('colors')
 const Shell = require('../../shell')
+const debug = require('debug')('node-electron:world')
 
 const { setWorldConstructor, setDefaultTimeout, Before } = require('cucumber')
 
@@ -30,6 +31,7 @@ class CucumberElectronWorld {
   }
 
   runCommand(command, { env } = { env: {} }) {
+    debug('run command', command)
     const args = command.split(' ')
     args[0] = path.resolve(__dirname + '/../../bin/' + args[0])
 

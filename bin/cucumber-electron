@@ -1,3 +1,4 @@
 #!/usr/bin/env node
+const {join} = require('path')
 
-require('../cli')(['integrations/cucumber.js', ...process.argv.slice(2)])
+require('../cli')([join(__dirname, '../integrations/cucumber.js'), ...process.argv.slice(2)])
