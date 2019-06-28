@@ -4,7 +4,6 @@ const options = new Options(electron.remote.process.argv.slice(2))
 const { ipcRenderer: ipc } = electron
 const { join } = require('path')
 
-console.log('OPTIONS', options)
 require('./patches/console')
 require('./patches/debug')({ isTTY: options.isTTY })
 
@@ -29,6 +28,7 @@ ipc.on('run-command', async () => {
 
   if (argv.length > 0) {
     let command = argv[0]
+    let succeeded
     const CLI = require(pathUtils.resolve(command))
     try {
       const cli = new CLI({
@@ -38,10 +38,13 @@ ipc.on('run-command', async () => {
       })
 
       await cli.run()
-      electron.remote.process.exit(0)
+      succeeded = true
     }
     catch (e) {
-      electron.remote.process.exit(1)
+      succeeded = false
+    }
+    if (!options.interactiveMode) {
+      electron.remote.process.exit(succeeded ? 0 : 1)
     }
   }
 })

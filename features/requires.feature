@@ -9,7 +9,7 @@ Feature: Requires files before test run
             When I check the weather
             Then it should be rainy
         """
-    And the file "setup.js" contains:
+    And the file "features/support/setup.js" contains:
         """
         window.weatherReport = 'Rainy!'
 
@@ -35,10 +35,10 @@ Feature: Requires files before test run
         })
         """
 
-  Scenario: Running a passing scenario with node.js and browser step definitions
-    When I run `cucumber-electron`
-    Then the process should exit with code 1
+  #Scenario: Running a passing scenario with node.js and browser step definitions
+    #When I run `cucumber-electron`
+    #Then the process should exit with code 1
 
-  Scenario: Debugging a scenario with node.js and browser step definitions
+  Scenario: Can supply a file to require before the test run
     When I run `cucumber-electron -r features/support/setup.js`
     Then the process should exit with code 0

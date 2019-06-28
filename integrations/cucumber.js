@@ -26,8 +26,7 @@ module.exports = class CucumberCLI {
       exitWithError(error)
     }
 
-    const exitCode = result.success ? 0 : 1
-    if (result.success === 0) {
+    if (result.success) {
       return Promise.resolve()
     } else {
       return Promise.reject()

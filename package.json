@@ -5,7 +5,8 @@
   "main": "index.js",
   "bin": {
     "node-electron": "bin/node-electron",
-    "cucumber-electron": "bin/cucumber-electron"
+    "cucumber-electron": "bin/cucumber-electron",
+    "mocha-electron": "bin/mocha-electron"
   },
   "scripts": {
     "test": "bin/cucumber-electron"
@@ -13,6 +14,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ansi-colors": "^3.2.4",
     "ansi-to-html": "^0.6.11",
     "debug": "^4.1.1",
     "electron-window": "^0.8.1",
@@ -22,7 +24,7 @@
     "cucumber": "^5.1.0",
     "electron": "latest",
     "mkdirp-promise": "^5.0.1",
-    "mocha": "latest",
+    "mocha": "github:dereke/mocha#friendly-api",
     "rmfr": "^2.0.0"
   }
 }

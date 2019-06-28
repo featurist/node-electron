@@ -24,7 +24,7 @@ When('I run a scenario with that step', function () {
   ].join('\n')
   return this.writeFile('features/with_that_step.feature', contents)
     .then(() => {
-      return this.runCommand('node-electron ./simple-cli features/with_that_step.feature')
+      return this.runCommand('cucumber-electron features/with_that_step.feature')
     })
 })
 
@@ -36,7 +36,7 @@ When('I run a scenario with that step and DEBUG={string}', function (debugEnviro
   ].join('\n')
   return this.writeFile('features/with_that_step_and_debug.feature', contents)
     .then(() => {
-      return this.runCommand('node-electron ./simple-cli features/with_that_step_and_debug.feature', { env: { DEBUG: debugEnvironmentValue } })
+      return this.runCommand('cucumber-electron features/with_that_step_and_debug.feature', { env: { DEBUG: debugEnvironmentValue } })
     })
 })
 

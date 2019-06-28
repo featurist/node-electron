@@ -1,0 +1,4 @@
+#!/usr/bin/env node
+const {join} = require('path')
+
+require('../cli')([join(__dirname, '../integrations/mocha.js'), ...process.argv.slice(2)])
